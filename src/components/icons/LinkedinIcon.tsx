@@ -9,7 +9,7 @@ export default function LinkedInIcon({
 }: LinkedInIconProps) {
 	return (
 		<div
-			className={`text-gray-400 hover:text-[#1e64c1ec] transition-colors duration-300 ${size}`}
+			className={`text-gray-400 hover:text-[#1e6dd4ec] transition-colors duration-300 ${size}`}
 		>
 			<svg
 				viewBox="0 0 256 256"
@@ -20,7 +20,6 @@ export default function LinkedInIcon({
 				<g fill="none">
 					<path
 						d="M0 18.338C0 8.216 8.474 0 18.92 0h218.16C247.53 0 256 8.216 256 18.338v219.327C256 247.79 247.53 256 237.08 256H18.92C8.475 256 0 247.791 0 237.668V18.335z"
-						className="text-gray-400 group-hover:text-[#0077B5]"
 						fill="currentColor"
 					/>
 					<path

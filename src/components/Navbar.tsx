@@ -1,25 +1,84 @@
+"use client";
+import { useState, useEffect } from "react";
 import Image from "next/image";
+import { Menu, X } from "lucide-react";
+import PopUpModal from "./PopUpModal";
+import ContactForm from "./Contact";
 
 export default function Navbar() {
+	const [isOpen, setIsOpen] = useState<boolean>(false);
+	const [isScrolled, setIsScrolled] =
+		useState<boolean>(false);
+	const [isModalOpen, setIsModalOpen] =
+		useState<boolean>(false);
+
+	useEffect(() => {
+		const handleScroll = () => {
+			setIsScrolled(window.scrollY > 10);
+		};
+
+		window.addEventListener("scroll", handleScroll);
+		return () =>
+			window.removeEventListener("scroll", handleScroll);
+	}, []);
+
 	return (
-		<nav className="w-full shadow px-6 py-4 sticky top-0 z-50 text-white">
+		<div
+			className={`w-full px-6 py-4 sticky top-0 z-50 transition-colors duration-300 ${
+				isScrolled
+					? "bg-black shadow text-white h-auto"
+					: "bg-transparent text-white"
+			}`}
+		>
 			<div className="max-w-6xl mx-auto flex justify-between items-center">
 				<Image
 					src="/logo-black.png"
-					width={150}
-					height={150}
+					width={120}
+					height={50}
 					alt="logo"
 				/>
-				<ul className="flex gap-6">
-					<li className="text-[#d3cece]">Home</li>
-					<li className="text-[#5c5a5a]">About</li>
-					<li className="text-[#5c5a5a]">Project</li>
-					<li className="text-[#5c5a5a]">Contact</li>
-				</ul>
-				<button className="bg-[#323232] py-2 px-4 rounded-xl hover:bg-gray-50 hover:text-[#323232]">
-					Lets talk
-				</button>
+
+				<div className="hidden md:block">
+					<button
+						className="bg-[#323232] py-2 px-4 rounded-xl hover:bg-gray-50 hover:text-[#323232]"
+						onClick={() => setIsModalOpen(true)}
+					>
+						Let’s talk
+					</button>
+				</div>
+
+				<div className="md:hidden">
+					<button onClick={() => setIsOpen(!isOpen)}>
+						{isOpen ? <X size={24} /> : <Menu size={24} />}
+					</button>
+				</div>
 			</div>
-		</nav>
+
+			{isOpen && (
+				<div className="md:hidden mt-4 space-y-3 px-4">
+					<ul className="flex flex-col gap-3">
+						<li className="text-[#d3cece]">Home</li>
+						<li className="text-[#5c5a5a]">About</li>
+						<li className="text-[#5c5a5a]">Project</li>
+						<li className="text-[#5c5a5a]">Contact</li>
+					</ul>
+					<button
+						className="w-full mt-2 bg-[#323232] py-2 px-4 rounded-xl hover:bg-gray-50 hover:text-[#323232]"
+						onClick={() => setIsModalOpen(true)}
+					>
+						Let’s talk
+					</button>
+				</div>
+			)}
+			<PopUpModal
+				title="Let's talk"
+				isOpen={isModalOpen}
+				onClose={() => {
+					setIsModalOpen(false);
+				}}
+			>
+				<ContactForm />
+			</PopUpModal>
+		</div>
 	);
 }

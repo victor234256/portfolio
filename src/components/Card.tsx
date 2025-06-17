@@ -16,7 +16,7 @@ export default function Card({
 	return (
 		//
 		<div
-			className={`rounded-2xl p-3 backdrop-blur-md shadow-md text-white   
+			className={`rounded-2xl p-3 backdrop-blur-md shadow-md text-white hover:bg-black   
         bg-[linear-gradient(120deg,rgba(255,255,255,0.3),rgba(255,255,255,0.05))] 
          ${className}`}
 		>

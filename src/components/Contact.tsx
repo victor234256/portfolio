@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import emailjs from "emailjs-com";
 
 export default function ContactForm() {
+	const [status, setStatus] = useState("");
 	const [formData, setFormData] = useState({
 		name: "",
 		email: "",
@@ -19,8 +21,34 @@ export default function ContactForm() {
 
 	const handleSubmit = (e: React.FormEvent) => {
 		e.preventDefault();
-		// handle form submission logic here
-		console.log(formData);
+		const templateParams = {
+			from_name: formData.name,
+			from_email: formData.email,
+			subject: formData.subject,
+			message: formData.message,
+		};
+
+		emailjs
+			.send(
+				"service_9qa8rxf",
+				"template_jzuo5ra",
+				templateParams,
+				"9Gf6DRS2hfXgobcDx",
+			)
+			.then(() => {
+				setStatus("Message sent!");
+				setFormData({
+					name: "",
+					email: "",
+					subject: "",
+					message: "",
+				});
+			})
+			.catch(() => {
+				setStatus(
+					"Something went wrong. Please try again.",
+				);
+			});
 	};
 
 	return (
@@ -74,7 +102,8 @@ export default function ContactForm() {
 			</div>
 			<button
 				type="submit"
-				className="px-6 py-2 bg-gradient-to-br from-white/10 to-white/5 text-white font-semibold rounded-md hover:bg-white/10 transition-all duration-300"
+				className="px-6 py-2  bg-gradient-to-r from-lime-500 to-blue-500  text-white font-semibold rounded-md hover:bg-white/10 transition-all duration-300"
+				onSubmit={handleSubmit}
 			>
 				Send Message
 			</button>

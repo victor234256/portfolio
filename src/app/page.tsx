@@ -1,33 +1,61 @@
 "use client";
+
 import Accordion from "@/components/Accordion";
 import Card from "@/components/Card";
 import ContactForm from "@/components/Contact";
+import Projects from "@/components/Projects";
 import SectionHeader from "@/components/SessionHeader";
-import SideBar from "@/components/SideBar";
+import MainPage from "@/components/MainPage";
 import React from "react";
 
-export default function page() {
+export default function Page() {
 	return (
-		<div className="grid grid-cols-1 md:grid-cols-[700px_400px] gap-4 p-4">
-			<div>
-				<SideBar />
-			</div>
-			<div className="w-full">
-				<Accordion
-					title={
-						<SectionHeader
-							title="Contact"
-							justify="center"
-						/>
-					}
-					defaultOpen
-				>
+		<div className="h-screen w-full">
+			<div className="grid grid-cols-1 md:grid-cols-[1fr_410px] h-full">
+				<main>
+					<MainPage />
+				</main>
+
+				<aside className=" h-full overflow-y-auto px-4 py-6 space-y-6">
 					<Card>
-						<div>
-							<ContactForm />
+						<div className="p-4">
+							<SectionHeader title="My Projects" />
+							<div className="py-3">
+								<Projects />
+							</div>
 						</div>
 					</Card>
-				</Accordion>
+
+					<div>
+						<SectionHeader title="Education" />
+						<Card>
+							<div className="space-y-4 p-4">
+								<div className="border-b border-gray-400 pb-2">
+									<p className="font-semibold">
+										National Open University of Nigeria
+									</p>
+									<p className="text-xs text-gray-400">
+										B.SC
+									</p>
+									<p className="text-sm">
+										Communication Technology
+									</p>
+									<p className="text-xs">2021</p>
+								</div>
+								<div className="pt-2">
+									<p className="font-semibold">
+										Altschool Africa
+									</p>
+									<p className="text-xs">Diploma</p>
+									<p className="text-sm text-gray-400">
+										Front End Engineering
+									</p>
+									<p className="text-xs">2023 - 2024</p>
+								</div>
+							</div>
+						</Card>
+					</div>
+				</aside>
 			</div>
 		</div>
 	);

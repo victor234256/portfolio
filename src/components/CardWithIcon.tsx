@@ -29,7 +29,7 @@ export default function CardWithIcon({
 
 	return (
 		<div
-			className={`relative px-4 pt-2 pb-6 rounded-2xl text-white shadow-md backdrop-blur-md
+			className={`relative px-4 pt-2 pb-6 rounded-2xl text-white shadow-md backdrop-blur-md hover:bg-black hover:transition
         bg-[linear-gradient(120deg,rgba(255,255,255,0.3),rgba(255,255,255,0.05))] ${className}`}
 		>
 			<div
