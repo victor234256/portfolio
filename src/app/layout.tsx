@@ -19,7 +19,7 @@ export default function RootLayout({
 
 	return (
 		<html lang="en">
-			<body className="min-h-screen bg-[#0F0F0F] bg-[url('/bg1.png')] bg-cover bg-no-repeat bg-fixed text-white">
+			<body className="min-h-screen bg-[#0F0F0F] bg-[url('/bg1.png')] bg-cover bg-no-repeat bg-fixed text-white ">
 				<Navbar />
 				<AnimatePresence mode="wait">
 					<motion.div
@@ -32,7 +32,7 @@ export default function RootLayout({
 							ease: "easeInOut",
 						}}
 					>
-						<main className="max-w-6xl mx-auto px-4 py-6">
+						<main className="max-w-6xl mx-auto px-4 py-6 ">
 							{children}
 						</main>
 					</motion.div>

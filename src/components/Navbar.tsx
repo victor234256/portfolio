@@ -56,12 +56,6 @@ export default function Navbar() {
 
 			{isOpen && (
 				<div className="md:hidden mt-4 space-y-3 px-4">
-					<ul className="flex flex-col gap-3">
-						<li className="text-[#d3cece]">Home</li>
-						<li className="text-[#5c5a5a]">About</li>
-						<li className="text-[#5c5a5a]">Project</li>
-						<li className="text-[#5c5a5a]">Contact</li>
-					</ul>
 					<button
 						className="w-full mt-2 bg-[#323232] py-2 px-4 rounded-xl hover:bg-gray-50 hover:text-[#323232]"
 						onClick={() => setIsModalOpen(true)}

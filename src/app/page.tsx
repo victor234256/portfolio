@@ -10,13 +10,13 @@ import React from "react";
 
 export default function Page() {
 	return (
-		<div className="h-screen w-full">
-			<div className="grid grid-cols-1 md:grid-cols-[1fr_410px] h-full">
-				<main>
+		<div className="w-full">
+			<div className="grid grid-cols-1 md:grid-cols-[1fr_410px] min-h-screen">
+				<main className="overflow-hidden">
 					<MainPage />
 				</main>
 
-				<aside className=" h-full overflow-y-auto px-4 py-6 space-y-6">
+				<aside className="h-full md:max-h-screen overflow-y-auto px-4 py-6 space-y-6 bg-black/10 backdrop-blur-md">
 					<Card>
 						<div className="p-4">
 							<SectionHeader title="My Projects" />
