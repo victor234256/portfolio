@@ -142,7 +142,7 @@ export default function MainPage() {
 					</Card>
 					<Card>
 						<Link
-							href="https://docs.google.com/document/d/1VwwOn_ro6lpuQ-CJQsptU8KS4XAQ1B9uKzCRWUvZh8k/edit?usp=sharing"
+							href="https://docs.google.com/document/d/1ymGrp8jKp_wAEobPnOfBKug_wkCUZHOX_vUeYQCM_Mk/edit?usp=sharing"
 							target="_blank"
 						>
 							<div className="flex gap-3 items-center justify-center cursor-pointer">
