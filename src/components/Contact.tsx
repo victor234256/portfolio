@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import emailjs from "emailjs-com";
+import React, { useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
 
 export default function ContactForm() {
 	const [status, setStatus] = useState("");
@@ -9,6 +9,7 @@ export default function ContactForm() {
 		subject: "",
 		message: "",
 	});
+	const form = useRef<HTMLFormElement | null>(null);
 
 	const handleChange = (
 		e: React.ChangeEvent<
@@ -21,38 +22,28 @@ export default function ContactForm() {
 
 	const handleSubmit = (e: React.FormEvent) => {
 		e.preventDefault();
-		const templateParams = {
-			from_name: formData.name,
-			from_email: formData.email,
-			subject: formData.subject,
-			message: formData.message,
-		};
-
 		emailjs
-			.send(
+			.sendForm(
 				"service_9qa8rxf",
-				"template_jzuo5ra",
-				templateParams,
-				"9Gf6DRS2hfXgobcDx",
+				"template_65lagzd",
+				form.current,
+				{
+					publicKey: "9Gf6DRS2hfXgobcDx",
+				},
 			)
-			.then(() => {
-				setStatus("Message sent!");
-				setFormData({
-					name: "",
-					email: "",
-					subject: "",
-					message: "",
-				});
-			})
-			.catch(() => {
-				setStatus(
-					"Something went wrong. Please try again.",
-				);
-			});
+			.then(
+				() => {
+					console.log("SUCCESS!");
+				},
+				(error) => {
+					console.log("FAILED...", error.text);
+				},
+			);
 	};
 
 	return (
 		<form
+			ref={form}
 			onSubmit={handleSubmit}
 			className="space-y-4 w-full max-w-xl"
 		>
@@ -103,7 +94,6 @@ export default function ContactForm() {
 			<button
 				type="submit"
 				className="px-6 py-2  bg-gradient-to-r from-lime-500 to-blue-500  text-white font-semibold rounded-md hover:bg-white/10 transition-all duration-300"
-				onSubmit={handleSubmit}
 			>
 				Send Message
 			</button>
