@@ -1,8 +1,6 @@
 "use client";
 
-import Accordion from "@/components/Accordion";
 import Card from "@/components/Card";
-import ContactForm from "@/components/Contact";
 import Projects from "@/components/Projects";
 import SectionHeader from "@/components/SessionHeader";
 import MainPage from "@/components/MainPage";
