@@ -12,18 +12,18 @@ type Project = {
 };
 
 const projects: Project[] = [
-	// {
-	// 	id: "1",
-	// 	name: "Portfolio",
-	// 	image: "/port.png",
-	// 	languages: [
-	// 		"React",
-	// 		"Next.js",
-	// 		"TailwindCSS",
-	// 		"TypeScript",
-	// 	],
-	// 	link: "https://yourdomain.com/portfolio",
-	// },
+	{
+		id: "1",
+		name: "Portfolio",
+		image: "/portfolio.png",
+		languages: [
+			"React",
+			"Next.js",
+			"TailwindCSS",
+			"TypeScript",
+		],
+		link: "https://victor-omeiza.vercel.app/",
+	},
 	{
 		id: "2",
 		name: "Cart Management",
