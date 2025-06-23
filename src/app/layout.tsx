@@ -5,11 +5,6 @@ import { usePathname } from "next/navigation";
 import "../../styles/globals.css";
 import Navbar from "../components/Navbar";
 
-const metadata = {
-	title: "My Portfolio",
-	description: "Created with Next.js 15 and Tailwind CSS",
-};
-
 export default function RootLayout({
 	children,
 }: {
@@ -19,6 +14,14 @@ export default function RootLayout({
 
 	return (
 		<html lang="en">
+			<head>
+				<title>Victor Omeiza Portfolio</title>
+				<meta
+					name="description"
+					content="Created with Next.js 15 and Tailwind CSS"
+				/>
+				<link rel="icon" href="/logo-black.png" />
+			</head>
 			<body className="min-h-screen bg-[#0F0F0F] bg-[url('/bg1.png')] bg-cover bg-no-repeat bg-fixed text-white ">
 				<Navbar />
 				<AnimatePresence mode="wait">
