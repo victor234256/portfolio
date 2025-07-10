@@ -25,6 +25,44 @@ const projects: Project[] = [
 		link: "https://victor-omeiza.vercel.app/",
 	},
 	{
+		id: "7",
+		name: "Pennup Admin - Osai Tech's company Project",
+		image: "/pennup-admin.png",
+		languages: [
+			"Tailwind",
+			"React",
+			"Typescript",
+			"Redux",
+			"Next JS",
+		],
+		link: "https://admin.pennup.com/dashboard",
+	},
+	{
+		id: "8",
+		name: "Pennup Student - Osai Tech's company Project",
+		image: "/pennup-student.png",
+		languages: [
+			"Tailwind",
+			"React",
+			"Typescript",
+			"Redux",
+			"Next JS",
+		],
+		link: "https://student.pennup.com/dashboard",
+	},
+	{
+		id: "6",
+		name: "School Management Software - personal project",
+		image: "/School-Management-Software.png",
+		languages: [
+			"Tailwind",
+			"React",
+			"Typescript",
+			"Next JS",
+		],
+		link: "https://next-school-mgt.vercel.app/admin",
+	},
+	{
 		id: "2",
 		name: "Cart Management",
 		image: "/cart.png",
@@ -57,6 +95,18 @@ const projects: Project[] = [
 		image: "/production.png",
 		languages: ["HTML", "CSS"],
 		link: "https://furnitures-landing-page.vercel.app/",
+	},
+	{
+		id: "6",
+		name: "School Management Software",
+		image: "/production.png",
+		languages: [
+			"Tailwind",
+			"React",
+			"Typescript",
+			"Next JS",
+		],
+		link: "https://next-school-mgt.vercel.app/admin",
 	},
 ];
 export default function Projects() {
@@ -103,7 +153,7 @@ export default function Projects() {
 					onClick={handleLoadMore}
 					className="mt-4 self-center bg-gray-700 text-white px-6 py-2 rounded-lg hover:bg-lime-700 transition"
 				>
-					Load More
+					Load More Projects
 				</button>
 			)}
 		</div>
