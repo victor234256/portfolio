@@ -2,13 +2,16 @@
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 type Project = {
 	id: string;
 	name: string;
 	image: string;
 	languages: string[];
-	link: string;
+	link?: string;
+	live?: boolean;
 };
 
 const projects: Project[] = [
@@ -16,64 +19,39 @@ const projects: Project[] = [
 		id: "1",
 		name: "Portfolio",
 		image: "/portfolio.png",
-		languages: [
-			"React",
-			"Next.js",
-			"TailwindCSS",
-			"TypeScript",
-		],
+		languages: ["React", "Next.js", "TailwindCSS", "TypeScript"],
 		link: "https://victor-omeiza.vercel.app/",
+		live: true,
 	},
-	// {
-	// 	id: "7",
-	// 	name: "Pennup Admin - Osai Tech's company Project",
-	// 	image: "/pennup-admin.png",
-	// 	languages: [
-	// 		"Tailwind",
-	// 		"React",
-	// 		"Typescript",
-	// 		"Redux",
-	// 		"Next JS",
-	// 	],
-	// 	link: "https://admin.pennup.com/dashboard",
-	// },
-	// {
-	// 	id: "8",
-	// 	name: "Pennup Student - Osai Tech's company Project",
-	// 	image: "/pennup-student.png",
-	// 	languages: [
-	// 		"Tailwind",
-	// 		"React",
-	// 		"Typescript",
-	// 		"Redux",
-	// 		"Next JS",
-	// 	],
-	// 	link: "https://student.pennup.com/dashboard",
-	// },
+	{
+		id: "7",
+		name: "Pennup Admin - Osai Tech's Company Project",
+		image: "/pennup-admin.png",
+		languages: ["Tailwind", "React", "Typescript", "Redux", "Next JS"],
+		live: false,
+	},
+	{
+		id: "8",
+		name: "Pennup Student - Osai Tech's Company Project",
+		image: "/pennup-student.png",
+		languages: ["Tailwind", "React", "Typescript", "Redux", "Next JS"],
+		live: false,
+	},
 	{
 		id: "6",
-		name: "School Management Software - personal project",
+		name: "School Management Software - Personal Project",
 		image: "/School-Management-Software.png",
-		languages: [
-			"Tailwind",
-			"React",
-			"Typescript",
-			"Next JS",
-		],
+		languages: ["Tailwind", "React", "Typescript", "Next JS"],
 		link: "https://next-school-mgt.vercel.app/admin",
+		live: true,
 	},
 	{
 		id: "2",
 		name: "Cart Management",
 		image: "/cart.png",
-		languages: [
-			"Vite",
-			"React",
-			"Redux",
-			"Redux Toolkit",
-			"TailwindCSS",
-		],
+		languages: ["Vite", "React", "Redux", "Redux Toolkit", "TailwindCSS"],
 		link: "https://cart-six-pink.vercel.app/",
+		live: true,
 	},
 	{
 		id: "3",
@@ -81,6 +59,7 @@ const projects: Project[] = [
 		image: "/shut.png",
 		languages: ["Vite", "Tailwind CSS", "React", "Redux"],
 		link: "https://shutett.vercel.app/",
+		live: true,
 	},
 	{
 		id: "4",
@@ -88,6 +67,7 @@ const projects: Project[] = [
 		image: "/coffee.png",
 		languages: ["HTML", "CSS"],
 		link: "https://coffee-landing-page-site-eight.vercel.app/",
+		live: true,
 	},
 	{
 		id: "5",
@@ -95,20 +75,10 @@ const projects: Project[] = [
 		image: "/production.png",
 		languages: ["HTML", "CSS"],
 		link: "https://furnitures-landing-page.vercel.app/",
-	},
-	{
-		id: "6",
-		name: "School Management Software",
-		image: "/production.png",
-		languages: [
-			"Tailwind",
-			"React",
-			"Typescript",
-			"Next JS",
-		],
-		link: "https://next-school-mgt.vercel.app/admin",
+		live: true,
 	},
 ];
+
 export default function Projects() {
 	const [visibleCount, setVisibleCount] = useState(1);
 
@@ -116,12 +86,18 @@ export default function Projects() {
 		setVisibleCount(projects.length);
 	};
 
+	const handleLinkClick = (project: Project) => {
+		if (!project.live) {
+			toast.error("This project is not live yet.");
+		}
+	};
+
 	return (
 		<div className="flex flex-col gap-6">
 			{projects.slice(0, visibleCount).map((project) => (
 				<div
 					key={project.id}
-					className=" bg-[url('/bg1.png')] border border-white/10 rounded-xl p-4 shadow-md flex flex-col items-center gap-4"
+					className="bg-[url('/bg1.png')] border border-white/10 rounded-xl p-4 shadow-md flex flex-col items-center gap-4"
 				>
 					<Image
 						src={project.image}
@@ -130,21 +106,26 @@ export default function Projects() {
 						height={200}
 						className="rounded-lg object-cover"
 					/>
-					<h3 className="text-lg font-semibold text-white">
-						{project.name}
-					</h3>
+					<h3 className="text-lg font-semibold text-white">{project.name}</h3>
 					<p className="text-sm text-gray-400 text-center">
-						{String(project.languages)
-							.split(",")
-							.join(" | ")}
+						{project.languages.join(" | ")}
 					</p>
-					<Link
-						href={project.link}
-						target="_blank"
-						className="mt-2 inline-block bg-gradient-to-r from-lime-500 to-blue-500 text-white px-4 py-2 rounded-md shadow hover:opacity-90 transition-opacity"
-					>
-						Visit Site
-					</Link>
+					{project.live && project.link ? (
+						<Link
+							href={project.link}
+							target="_blank"
+							className="mt-2 inline-block bg-gradient-to-r from-lime-500 to-blue-500 text-white px-4 py-2 rounded-md shadow hover:opacity-90 transition-opacity"
+						>
+							Visit Site
+						</Link>
+					) : (
+						<button
+							onClick={() => handleLinkClick(project)}
+							className="mt-2 inline-block bg-gray-600 text-white px-4 py-2 rounded-md shadow hover:opacity-80 transition-opacity cursor-not-allowed"
+						>
+							Not Live
+						</button>
+					)}
 				</div>
 			))}
 
@@ -156,6 +137,8 @@ export default function Projects() {
 					Load More Projects
 				</button>
 			)}
+
+			<ToastContainer position="top-right" />
 		</div>
 	);
 }
