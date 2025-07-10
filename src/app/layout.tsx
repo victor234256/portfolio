@@ -1,5 +1,5 @@
 "use client";
-
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { AnimatePresence, motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 import "../../styles/globals.css";
@@ -37,6 +37,7 @@ export default function RootLayout({
 					>
 						<main className="max-w-6xl mx-auto px-4 py-6 ">
 							{children}
+							<SpeedInsights />
 						</main>
 					</motion.div>
 				</AnimatePresence>
