@@ -17,9 +17,27 @@ type Project = {
 const projects: Project[] = [
 	{
 		id: "1",
+		name: "Com4t | E-commerce ",
+		image: "/com4t.png",
+		languages: [
+			"React",
+			"Redux",
+			"TailwindCSS",
+			"React Query",
+		],
+		link: "https://com4t.vercel.app/",
+		live: true,
+	},
+	{
+		id: "10",
 		name: "Portfolio",
 		image: "/portfolio.png",
-		languages: ["React", "Next.js", "TailwindCSS", "TypeScript"],
+		languages: [
+			"React",
+			"Next.js",
+			"TailwindCSS",
+			"TypeScript",
+		],
 		link: "https://victor-omeiza.vercel.app/",
 		live: true,
 	},
@@ -27,21 +45,38 @@ const projects: Project[] = [
 		id: "7",
 		name: "Pennup Admin - Osai Tech's Company Project",
 		image: "/pennup-admin.png",
-		languages: ["Tailwind", "React", "Typescript", "Redux", "Next JS"],
+		languages: [
+			"Tailwind",
+			"React",
+			"Typescript",
+			"Redux",
+			"Next JS",
+		],
 		live: false,
 	},
 	{
 		id: "8",
 		name: "Pennup Student - Osai Tech's Company Project",
 		image: "/pennup-student.png",
-		languages: ["Tailwind", "React", "Typescript", "Redux", "Next JS"],
+		languages: [
+			"Tailwind",
+			"React",
+			"Typescript",
+			"Redux",
+			"Next JS",
+		],
 		live: false,
 	},
 	{
 		id: "6",
 		name: "School Management Software - Personal Project",
 		image: "/School-Management-Software.png",
-		languages: ["Tailwind", "React", "Typescript", "Next JS"],
+		languages: [
+			"Tailwind",
+			"React",
+			"Typescript",
+			"Next JS",
+		],
 		link: "https://next-school-mgt.vercel.app/admin",
 		live: true,
 	},
@@ -49,7 +84,13 @@ const projects: Project[] = [
 		id: "2",
 		name: "Cart Management",
 		image: "/cart.png",
-		languages: ["Vite", "React", "Redux", "Redux Toolkit", "TailwindCSS"],
+		languages: [
+			"Vite",
+			"React",
+			"Redux",
+			"Redux Toolkit",
+			"TailwindCSS",
+		],
 		link: "https://cart-six-pink.vercel.app/",
 		live: true,
 	},
@@ -106,7 +147,9 @@ export default function Projects() {
 						height={200}
 						className="rounded-lg object-cover"
 					/>
-					<h3 className="text-lg font-semibold text-white">{project.name}</h3>
+					<h3 className="text-lg font-semibold text-white">
+						{project.name}
+					</h3>
 					<p className="text-sm text-gray-400 text-center">
 						{project.languages.join(" | ")}
 					</p>
