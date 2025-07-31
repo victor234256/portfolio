@@ -24,6 +24,7 @@ const projects: Project[] = [
 			"Redux",
 			"TailwindCSS",
 			"React Query",
+			"Axios",
 		],
 		link: "https://com4t.vercel.app/",
 		live: true,
